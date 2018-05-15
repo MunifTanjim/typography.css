@@ -1,0 +1,20 @@
+{
+  "name": "typography.css",
+  "version": "0.1.0",
+  "description": "CSS Framework for Web Typography",
+  "keywords": ["css", "scss", "typography"],
+  "homepage": "https://github.com/MunifTanjim/typography.css#readme",
+  "bugs": "https://github.com/MunifTanjim/typography.css/issues",
+  "license": "MIT",
+  "author": "MunifTanjim (https://muniftanjim.com)",
+  "main": "dist/typography",
+  "repository": "github:MunifTanjim/typography.css",
+  "scripts": {
+    "build:css": "node ./src/scripts/build-css.js"
+  },
+  "devDependencies": {
+    "modularscale-sass": "^3.0.5",
+    "node-sass": "^4.9.0",
+    "sass-math-pow": "^0.1.5"
+  }
+}
