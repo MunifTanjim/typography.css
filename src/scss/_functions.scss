@@ -1,0 +1,50 @@
+@import 'scale';
+
+@function get-font-family($scope: body) {
+  @return map-get($font-family, $scope);
+}
+
+@function get-screen-breakpoint-width($device) {
+  @return map-get($screen-breakpoint, $device);
+}
+
+@function get-font-size-root($device: mobile) {
+  @return map-get($font-size-root, $device);
+}
+
+@function get-font-size-root-ratio($device: mobile) {
+  @return get-font-size-root($device) / $typography-base-size;
+}
+
+@function get-line-height($device: mobile) {
+  @return map-get($line-height, $device);
+}
+
+@function rhythm($device: mobile) {
+  @return round(get-font-size-root($device) * get-line-height($device));
+}
+
+@function rhythm-relative($device: mobile) {
+  @return rhythm($device) / get-font-size-root($device);
+}
+
+@function get-scale-point($tag: default) {
+  @return map-get($scale-point, $tag);
+}
+
+@function get-font-size-ratio($tag: default, $device: mobile) {
+  $scale: get-scale($device);
+  @return ms(get-scale-point($tag), $scale...);
+}
+
+@function get-heading-line-height-rhythm($heading-tag) {
+  @return map-get($heading-line-height-rhythm, $heading-tag);
+}
+
+@function get-heading-margin-top-rhythm($heading-tag) {
+  @return map-get($heading-margin-top-rhythm, $heading-tag);
+}
+
+@function get-heading-margin-bottom-rhythm($heading-tag) {
+  @return map-get($heading-margin-bottom-rhythm, $heading-tag);
+}
