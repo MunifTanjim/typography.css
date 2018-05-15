@@ -1,0 +1,91 @@
+$typography-base-size: 16;
+
+$font-stack__default: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+$font-family: (
+  body: $font-stack__default,
+  heading: $font-stack__default,
+  code: (monospace, monospace)
+) !default;
+
+$screen-breakpoint: (
+  tablet: 640px,
+  desktop: 1040px
+) !default;
+
+$max-width--content: 35rem !default;
+
+$font-size-root: (
+  mobile: 16,
+  tablet: 18,
+  desktop: 20
+) !default;
+
+$line-height: (
+  mobile: 1.5,
+  tablet: 1.55,
+  desktop: 1.6
+) !default;
+
+$scale-base: (
+  mobile: 1,
+  tablet: 1,
+  desktop: 1
+) !default;
+
+$scale-ratio: (
+  mobile: 2.5,
+  tablet: 2.75,
+  desktop: 3
+) !default;
+
+$scale-point: (
+  default: 0,
+  h1: 5,
+  h2: 4,
+  h3: 3,
+  h4: 2,
+  h5: 1,
+  h6: 0
+) !default;
+
+$heading-line-height-rhythm: (
+  h1: 2.5,
+  h2: 1.5,
+  h3: 1.5,
+  h4: 1,
+  h5: 1,
+  h6: 1
+) !default;
+
+$heading-margin-top-rhythm: (
+  h1: 2.5,
+  h2: 2,
+  h3: 1.5,
+  h4: 1.5,
+  h5: 1,
+  h6: 1
+) !default;
+
+$heading-margin-bottom-rhythm: (
+  h1: 1.5,
+  h2: 1,
+  h3: 1,
+  h4: 1,
+  h5: 0.5,
+  h6: 0.5
+) !default;
+
+$hr-margin-rhythm: 2 !default;
+$hr-mode: 'content' !default;
+$hr-content: '***' !default;
+$hr-content-letter-spacing: 2em !default;
+$hr-height: 3 !default;
+$hr-width: 80% !default;
+$hr-line-background-image: linear-gradient(
+  to right,
+  transparent,
+  black,
+  transparent
+) !default;
