@@ -1,0 +1,66 @@
+$heading-tags: h1, h2, h3, h4, h5, h6;
+
+@function get-headings-properties($device: mobile) {
+  $properties: ();
+  @each $tag in $heading-tags {
+    $properties: map-merge(
+      $properties,
+      (
+        $tag:
+          (
+            get-font-size-ratio($tag, $device),
+            get-heading-line-height-rhythm($tag),
+            get-heading-margin-top-rhythm($tag),
+            get-heading-margin-bottom-rhythm($tag)
+          )
+      )
+    );
+  }
+  @return $properties;
+}
+
+@function get-heading-font-size-ratio($properties) {
+  @return nth($properties, 1);
+}
+
+@function get-heading-line-height($properties) {
+  @return nth($properties, 2);
+}
+
+@function get-heading-margin-top($properties) {
+  @return nth($properties, 3);
+}
+
+@function get-heading-margin-bottom($properties) {
+  @return nth($properties, 4);
+}
+
+@each $tag, $properties in get-headings-properties(mobile) {
+  #{$tag} {
+    @include font-size(get-heading-font-size-ratio($properties));
+    @include line-height(get-heading-line-height($properties), mobile);
+    @include margin-top(get-heading-margin-top($properties), mobile);
+    @include margin-bottom(get-heading-margin-bottom($properties), mobile);
+  }
+}
+
+@each $device, $width in $screen-breakpoint {
+  @include min-screen($width) {
+    @each $tag, $properties in get-headings-properties($device) {
+      #{$tag} {
+        @include font-size(get-heading-font-size-ratio($properties));
+        @include line-height(get-heading-line-height($properties), $device);
+        @include margin-top(get-heading-margin-top($properties), $device);
+        @include margin-bottom(get-heading-margin-bottom($properties), $device);
+      }
+    }
+  }
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin-top: 0;
+}
