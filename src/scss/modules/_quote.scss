@@ -1,0 +1,45 @@
+blockquote {
+  font-style: italic;
+
+  @include padding-left(1, mobile);
+
+  figure & {
+    @include font-size(1.4);
+    @include margin((2 0), mobile);
+
+    &,
+    & > * {
+      @include line-height(1.5, mobile);
+    }
+  }
+
+  @each $device, $width in $screen-breakpoint {
+    @include min-screen($width) {
+      @include padding-left(1, $device);
+
+      figure & {
+        @include margin((2 0), $device);
+
+        @if (desktop == $device) {
+          padding-left: 0;
+          text-align: center;
+        }
+
+        &,
+        & > * {
+          @include line-height(1.5, $device);
+        }
+      }
+    }
+  }
+}
+
+cite {
+  display: block;
+  text-align: right;
+  @include font-size(0.9375);
+
+  figure & {
+    @include font-size(1);
+  }
+}
