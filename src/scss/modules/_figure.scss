@@ -1,0 +1,14 @@
+figure {
+  display: block;
+}
+
+figcaption {
+  display: block;
+  margin-bottom: 0;
+  @include font-size(0.875);
+  text-align: center;
+
+  & > * {
+    margin-bottom: 0;
+  }
+}
