@@ -1,0 +1,37 @@
+html {
+  font-size: #{get-font-size-root(mobile)}px;
+  text-size-adjust: #{(get-font-size-root(mobile) / $typography-base-size) * 100%};
+
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+* {
+  @include line-height(1, mobile);
+  @include margin((0, 0, 1), mobile);
+}
+
+@each $device, $width in $screen-breakpoint {
+  @include min-screen($width) {
+    html {
+      font-size: #{get-font-size-root($device)}px;
+      text-size-adjust: #{(get-font-size-root($device) / $typography-base-size) *
+        100%};
+    }
+
+    * {
+      @include line-height(1, $device);
+      @include margin((0, 0, 1), $device);
+    }
+  }
+}
+
+body {
+  font-family: get-font-family(body);
+  word-wrap: break-word;
+}
