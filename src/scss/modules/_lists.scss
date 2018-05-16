@@ -1,0 +1,15 @@
+ol,
+ul {
+  li {
+    margin-bottom: 0;
+  }
+
+  li > & {
+    @include margin-bottom(0.5, mobile);
+    @each $device, $width in $screen-breakpoint {
+      @include min-screen($width) {
+        @include margin-bottom(0.5, $device);
+      }
+    }
+  }
+}
