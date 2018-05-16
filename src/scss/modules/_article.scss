@@ -1,0 +1,27 @@
+article {
+  margin: 0 auto;
+
+  & > * {
+    max-width: $max-width--content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include min-screen(get-screen-breakpoint-width(desktop)) {
+    max-width: get-screen-breakpoint-width(desktop);
+
+    .float-left,
+    .float-right {
+      max-width: $max-width--content-float;
+      padding: 0 ($max-width--content-float * 8.75 / 100);
+    }
+
+    .float-left {
+      float: left;
+    }
+
+    .float-right {
+      float: right;
+    }
+  }
+}

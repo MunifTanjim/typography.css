@@ -11,10 +11,12 @@ $font-family: (
 
 $screen-breakpoint: (
   tablet: 640px,
-  desktop: 1040px
+  desktop: 1080px
 ) !default;
 
-$max-width--content: 35rem !default;
+$max-width--content: 720px !default;
+$max-width--content-float: pow(2 * $major-second, -1) *
+  map-get($screen-breakpoint, desktop) !default;
 
 $font-size-root: (
   mobile: 16,

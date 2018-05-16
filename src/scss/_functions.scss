@@ -1,5 +1,3 @@
-@import 'scale';
-
 @function get-font-family($scope: body) {
   @return map-get($font-family, $scope);
 }
