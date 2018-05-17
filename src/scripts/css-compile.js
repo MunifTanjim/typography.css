@@ -1,6 +1,7 @@
-const fs = require('fs')
 const path = require('path')
 const sass = require('node-sass')
+
+const { writeFile } = require('./helpers')
 
 const rootDir = path.resolve(__dirname, '../..')
 const dirs = {
@@ -13,20 +14,7 @@ const dirs = {
   ]
 }
 
-const writeCss = ({ css }) => {
-  fs.writeFile(dirs.output, css, err => {
-    if (err) console.error(err)
-    else console.log('[built]: typography.css')
-  })
-}
-
-const writeCssMap = ({ map }) => {
-  fs.writeFile(dirs.outputMap, map, err => {
-    if (err) console.error(err)
-    else console.log('[built]: typography.css.map')
-  })
-}
-
+console.log('Compiling SCSS...')
 sass.render(
   {
     file: dirs.input,
@@ -40,8 +28,8 @@ sass.render(
   (error, result) => {
     if (error) console.error(error)
     else {
-      writeCss(result)
-      writeCssMap(result)
+      writeFile(dirs.output, result.css)
+      writeFile(dirs.outputMap, result.map)
     }
   }
 )

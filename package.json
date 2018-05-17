@@ -7,14 +7,22 @@
   "bugs": "https://github.com/MunifTanjim/typography.css/issues",
   "license": "MIT",
   "author": "MunifTanjim (https://muniftanjim.com)",
-  "main": "dist/typography",
+  "files": ["dist", "src/scss"],
+  "main": "dist/css/typography.css",
   "repository": "github:MunifTanjim/typography.css",
   "scripts": {
-    "build:css": "node ./src/scripts/build-css.js"
+    "build:css": "npm-run-all -s css:compile css:postcss css:minify --silent",
+    "css:compile": "node ./src/scripts/css-compile.js",
+    "css:postcss": "node ./src/scripts/css-postcss.js",
+    "css:minify": "node ./src/scripts/css-minify.js"
   },
   "devDependencies": {
+    "autoprefixer": "^8.5.0",
+    "clean-css": "^4.1.11",
     "modularscale-sass": "^3.0.5",
     "node-sass": "^4.9.0",
+    "npm-run-all": "^4.1.3",
+    "postcss": "^6.0.22",
     "sass-math-pow": "^0.1.5"
   }
 }
