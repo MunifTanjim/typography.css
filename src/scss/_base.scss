@@ -11,9 +11,18 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  margin: 0;
+  font-family: get-font-family(body);
+  word-wrap: break-word;
+}
+
 * {
   @include line-height(1, mobile);
-  @include margin((0, 0, 1), mobile);
+}
+
+#{$typography-block-tags} {
+  @include margin((0 0 1), mobile);
 }
 
 @each $device, $width in $screen-breakpoint {
@@ -26,12 +35,10 @@ html {
 
     * {
       @include line-height(1, $device);
-      @include margin((0, 0, 1), $device);
+    }
+
+    #{$typography-block-tags} {
+      @include margin((0 0 1), $device);
     }
   }
-}
-
-body {
-  font-family: get-font-family(body);
-  word-wrap: break-word;
 }

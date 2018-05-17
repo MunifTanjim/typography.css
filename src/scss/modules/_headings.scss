@@ -1,8 +1,6 @@
-$heading-tags: h1, h2, h3, h4, h5, h6;
-
 @function get-headings-properties($device: mobile) {
   $properties: ();
-  @each $tag in $heading-tags {
+  @each $tag in $typography-heading-tags {
     $properties: map-merge(
       $properties,
       (

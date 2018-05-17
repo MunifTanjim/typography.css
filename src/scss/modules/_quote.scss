@@ -1,45 +1,53 @@
 blockquote {
   font-style: italic;
-
   @include padding-left(1, mobile);
 
-  figure & {
-    @include font-size(1.4);
-    @include margin((2 0), mobile);
+  cite {
+    display: block;
+    text-align: right;
+    @include font-size(0.9375);
+  }
+}
 
-    &,
-    & > * {
-      @include line-height(1.5, mobile);
-    }
+figure blockquote {
+  @include font-size(1.4);
+  @include line-height(1.5, mobile);
+  @include margin((1.5 0), mobile);
+
+  cite {
+    @include font-size(1);
   }
 
-  @each $device, $width in $screen-breakpoint {
-    @include min-screen($width) {
+  * {
+    line-height: inherit;
+  }
+}
+
+@each $device, $width in $screen-breakpoint {
+  @include min-screen($width) {
+    blockquote {
       @include padding-left(1, $device);
 
       figure & {
-        @include margin((2 0), $device);
+        @include line-height(1.5, $device);
+        @include margin((1.5 0), $device);
 
         @if (desktop == $device) {
           padding-left: 0;
           text-align: center;
-        }
 
-        &,
-        & > * {
-          @include line-height(1.5, $device);
+          cite {
+            text-align: inherit;
+          }
+        }
+      }
+
+      @if (desktop == $device) {
+        .float-left &,
+        .float-right & {
+          @include margin((1 0), $device);
         }
       }
     }
-  }
-}
-
-cite {
-  display: block;
-  text-align: right;
-  @include font-size(0.9375);
-
-  figure & {
-    @include font-size(1);
   }
 }

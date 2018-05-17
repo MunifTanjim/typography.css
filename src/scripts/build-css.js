@@ -4,7 +4,7 @@ const sass = require('node-sass')
 
 const rootDir = path.resolve(__dirname, '../..')
 const dirs = {
-  input: path.resolve(rootDir, 'src/scss/typography.scss'),
+  input: path.resolve(rootDir, 'src/scss/_typography.scss'),
   output: path.resolve(rootDir, 'dist/css/typography.css'),
   outputMap: path.resolve(rootDir, 'dist/css/typography.css.map'),
   includes: [
@@ -16,14 +16,14 @@ const dirs = {
 const writeCss = ({ css }) => {
   fs.writeFile(dirs.output, css, err => {
     if (err) console.error(err)
-    else console.log('Wrote CSS')
+    else console.log('[built]: typography.css')
   })
 }
 
 const writeCssMap = ({ map }) => {
   fs.writeFile(dirs.outputMap, map, err => {
     if (err) console.error(err)
-    else console.log('Wrote CSS Map')
+    else console.log('[built]: typography.css.map')
   })
 }
 
