@@ -2,12 +2,19 @@
   "name": "typography.css",
   "version": "0.1.0",
   "description": "CSS Framework for Web Typography",
-  "keywords": ["css", "scss", "typography"],
+  "keywords": [
+    "css",
+    "scss",
+    "typography"
+  ],
   "homepage": "https://github.com/MunifTanjim/typography.css#readme",
   "bugs": "https://github.com/MunifTanjim/typography.css/issues",
   "license": "MIT",
   "author": "MunifTanjim (https://muniftanjim.com)",
-  "files": ["dist", "src/scss"],
+  "files": [
+    "dist",
+    "src/scss"
+  ],
   "main": "dist/css/typography.css",
   "repository": "github:MunifTanjim/typography.css",
   "scripts": {
@@ -19,6 +26,7 @@
   "devDependencies": {
     "autoprefixer": "^8.5.0",
     "clean-css": "^4.1.11",
+    "mkdirp": "^0.5.1",
     "modularscale-sass": "^3.0.5",
     "node-sass": "^4.9.0",
     "npm-run-all": "^4.1.3",
