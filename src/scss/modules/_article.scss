@@ -1,24 +1,24 @@
-article {
+#{$content-selector} {
   margin: 0 auto;
-  @include padding($padding-rhythm--content, mobile);
+  @include padding($content-padding-rhythm, mobile);
 
   & > * {
-    max-width: $max-width--content;
+    max-width: $content-max-width;
     margin-left: auto;
     margin-right: auto;
   }
 
   @each $device, $width in $screen-breakpoint {
     @include min-screen($width) {
-      @include padding($padding-rhythm--content, $device);
+      @include padding($content-padding-rhythm, $device);
 
-      @if (desktop == $device) {
+      @if ($device == desktop) {
         max-width: $width;
 
         .float-left,
         .float-right {
-          max-width: $max-width--content-float;
-          padding: 0 ($max-width--content-float * 8.75 / 100);
+          max-width: $content-float-max-width;
+          padding: 0 ($content-float-max-width * 8.75 / 100);
         }
 
         .float-left {

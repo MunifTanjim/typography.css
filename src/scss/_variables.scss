@@ -1,3 +1,5 @@
+$typography-selector: '.typography' !default;
+
 $typography-base-size: 16;
 
 $typography-block-tags: blockquote, details, figure, h1, h2, h3, h4, h5, h6, hr,
@@ -5,51 +7,62 @@ $typography-block-tags: blockquote, details, figure, h1, h2, h3, h4, h5, h6, hr,
 
 $typography-heading-tags: h1, h2, h3, h4, h5, h6;
 
-$font-family-default: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-$font-family: (
-  body: $font-family-default,
-  heading: $font-family-default,
-  code: (monospace, monospace)
-) !default;
-
+// minimum width for screen breakpoints
 $screen-breakpoint: (
   tablet: 640px,
   desktop: 1080px
 ) !default;
 
-$max-width--content: 720px !default;
-$max-width--content-float: pow(2 * $major-second, -1) *
-  map-get($screen-breakpoint, desktop) !default;
-$padding-rhythm--content: 0 1 !default;
+$font-family-default: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-$font-size-root: (
+// @function get-font-family($scope)
+$font-family: (
+  body: $font-family-default,
+  heading: $font-family-default,
+  code: (
+    monospace,
+    monospace
+  )
+) !default;
+
+// @function get-font-size-base($device)
+$font-size-base: (
   mobile: 16,
   tablet: 18,
   desktop: 20
 ) !default;
 
+// @function rhythm($device)
 $line-height: (
   mobile: 1.5,
   tablet: 1.55,
   desktop: 1.6
 ) !default;
 
+// @function get-scale($device)
 $scale-base: (
   mobile: 1,
   tablet: 1,
   desktop: 1
 ) !default;
 
+// @function get-scale($device)
 $scale-ratio: (
   mobile: 2.5,
   tablet: 2.75,
   desktop: 3
 ) !default;
 
-$scale-point: (
-  default: 0,
+/* content block */
+$content-selector: 'article' !default;
+$content-max-width: 720px !default;
+$content-float-max-width: pow(2 * $major-second, -1) *
+  map-get($screen-breakpoint, desktop) !default;
+$content-padding-rhythm: 0 1 !default;
+
+/* headings */
+$heading-scale-point: (
   h1: 5,
   h2: 4,
   h3: 3,
@@ -85,10 +98,13 @@ $heading-margin-bottom-rhythm: (
   h6: 0.5
 ) !default;
 
+/* horizontal rule */
 $hr-margin-rhythm: 2 !default;
 $hr-mode: 'content' !default;
+// mode: `content`
 $hr-content: '***' !default;
 $hr-content-letter-spacing: 2em !default;
+// mode: `line`
 $hr-height: 3 !default;
 $hr-width: 80% !default;
 $hr-line-background-image: linear-gradient(

@@ -5,17 +5,9 @@
   @return poly-pow($args...);
 }
 
-@function get-scale-base($device: mobile) {
-  @return map-get($scale-base, $device);
-}
-
-@function get-scale-ratio($device: mobile) {
-  @return map-get($scale-ratio, $device);
-}
-
 @function get-scale($device: mobile) {
   @return (
-    base: get-scale-base($device),
-    ratio: get-scale-ratio($device) * 1at5
+    base: map-get($scale-base, $device),
+    ratio: map-get($scale-ratio, $device) * 1at5
   );
 }

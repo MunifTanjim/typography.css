@@ -1,32 +1,24 @@
-@mixin font-size($value) {
-  font-size: #{$value}rem;
+@mixin font-size($ratio, $device: mobile) {
+  font-size: #{$ratio * get-font-size-base($device)}px;
 }
 
 @mixin line-height($rhythm-value, $device: mobile) {
   line-height: #{$rhythm-value * rhythm($device)}px;
-  line-height: #{$rhythm-value * rhythm-relative($device)}rem;
 }
 
 @mixin margin($rhythm-values, $device: mobile) {
   $margin-px: ();
-  $margin-rem: ();
   @each $value in $rhythm-values {
     $margin-px: append(
       $margin-px,
       if($value == auto, $value, #{$value * rhythm($device)}px)
     );
-    $margin-rem: append(
-      $margin-rem,
-      if($value == auto, $value, #{$value * rhythm-relative($device)}rem)
-    );
   }
   margin: $margin-px;
-  margin: $margin-rem;
 }
 
 @mixin margin-direction($direction, $rhythm-value, $device: mobile) {
   margin-#{$direction}: #{$rhythm-value * rhythm($device)}px;
-  margin-#{$direction}: #{$rhythm-value * rhythm-relative($device)}rem;
 }
 
 @mixin margin-top($rhythm-value, $device: mobile) {
@@ -47,24 +39,17 @@
 
 @mixin padding($rhythm-values, $device: mobile) {
   $padding-px: ();
-  $padding-rem: ();
   @each $value in $rhythm-values {
     $padding-px: append(
       $padding-px,
       if($value == auto, $value, #{$value * rhythm($device)}px)
     );
-    $padding-rem: append(
-      $padding-rem,
-      if($value == auto, $value, #{$value * rhythm-relative($device)}rem)
-    );
   }
   padding: $padding-px;
-  padding: $padding-rem;
 }
 
 @mixin padding-direction($direction, $rhythm-value, $device: mobile) {
   padding-#{$direction}: #{$rhythm-value * rhythm($device)}px;
-  padding-#{$direction}: #{$rhythm-value * rhythm-relative($device)}rem;
 }
 
 @mixin padding-top($rhythm-value, $device: mobile) {

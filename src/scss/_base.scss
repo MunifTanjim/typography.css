@@ -1,8 +1,10 @@
-html {
-  font-size: #{get-font-size-root(mobile)}px;
-  text-size-adjust: #{(get-font-size-root(mobile) / $typography-base-size) * 100%};
+@function __get-text-size-adjust-base($device: mobile) {
+  @return (get-font-size-base($device) / $typography-base-size) * 100%;
+}
 
+html {
   box-sizing: border-box;
+  font-size: #{$typography-base-size}px;
 }
 
 *,
@@ -11,34 +13,33 @@ html {
   box-sizing: inherit;
 }
 
-body {
-  margin: 0;
+#{$typography-selector} {
+  font-size: #{get-font-size-base(mobile)}px;
+  text-size-adjust: __get-text-size-adjust-base(mobile);
+
   font-family: get-font-family(body);
   word-wrap: break-word;
-}
 
-* {
-  @include line-height(1, mobile);
-}
+  * {
+    @include line-height(1, mobile);
+  }
 
-#{$typography-block-tags} {
-  @include margin((0 0 1), mobile);
-}
+  #{$typography-block-tags} {
+    @include margin((0 0 1), mobile);
+  }
 
-@each $device, $width in $screen-breakpoint {
-  @include min-screen($width) {
-    html {
-      font-size: #{get-font-size-root($device)}px;
-      text-size-adjust: #{(get-font-size-root($device) / $typography-base-size) *
-        100%};
-    }
+  @each $device, $width in $screen-breakpoint {
+    @include min-screen($width) {
+      font-size: #{get-font-size-base($device)}px;
+      text-size-adjust: __get-text-size-adjust-base($device);
 
-    * {
-      @include line-height(1, $device);
-    }
+      * {
+        @include line-height(1, $device);
+      }
 
-    #{$typography-block-tags} {
-      @include margin((0 0 1), $device);
+      #{$typography-block-tags} {
+        @include margin((0 0 1), $device);
+      }
     }
   }
 }

@@ -34,6 +34,12 @@ code,
 kbd,
 var,
 samp {
-  @include font-size(0.9);
   vertical-align: bottom;
+
+  @include font-size(0.9, mobile);
+  @each $device, $width in $screen-breakpoint {
+    @include min-screen($width) {
+      @include font-size(0.9, $device);
+    }
+  }
 }

@@ -4,8 +4,14 @@ figure {
 
 figcaption {
   display: block;
-  @include font-size(0.875);
   text-align: center;
+
+  @include font-size(0.875, mobile);
+  @each $device, $width in $screen-breakpoint {
+    @include min-screen($width) {
+      @include font-size(0.875, $device);
+    }
+  }
 
   * {
     margin-bottom: 0;

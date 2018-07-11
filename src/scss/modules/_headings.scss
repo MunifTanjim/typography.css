@@ -1,55 +1,48 @@
-@function get-headings-properties($device: mobile) {
+@function __get-headings-font-size-ratio($tag, $device: mobile) {
+  $_scale: get-scale($device);
+  $_scale_point: map-get($heading-scale-point, $tag);
+  @return ms($_scale_point, $_scale...);
+}
+
+@function __get-headings-properties($device: mobile) {
   $properties: ();
   @each $tag in $typography-heading-tags {
     $properties: map-merge(
       $properties,
       (
-        $tag:
-          (
-            get-font-size-ratio($tag, $device),
-            get-heading-line-height-rhythm($tag),
-            get-heading-margin-top-rhythm($tag),
-            get-heading-margin-bottom-rhythm($tag)
-          )
+        $tag: (
+          __get-headings-font-size-ratio($tag, $device),
+          map-get($heading-line-height-rhythm, $tag),
+          map-get($heading-margin-top-rhythm, $tag),
+          map-get($heading-margin-bottom-rhythm, $tag)
+        )
       )
     );
   }
   @return $properties;
 }
 
-@function get-heading-font-size-ratio($properties) {
-  @return nth($properties, 1);
+#{$typography-heading-tags} {
+  font-family: get-font-family(heading);
 }
 
-@function get-heading-line-height($properties) {
-  @return nth($properties, 2);
-}
-
-@function get-heading-margin-top($properties) {
-  @return nth($properties, 3);
-}
-
-@function get-heading-margin-bottom($properties) {
-  @return nth($properties, 4);
-}
-
-@each $tag, $properties in get-headings-properties(mobile) {
+@each $tag, $properties in __get-headings-properties(mobile) {
   #{$tag} {
-    @include font-size(get-heading-font-size-ratio($properties));
-    @include line-height(get-heading-line-height($properties), mobile);
-    @include margin-top(get-heading-margin-top($properties), mobile);
-    @include margin-bottom(get-heading-margin-bottom($properties), mobile);
+    @include font-size(nth($properties, 1), mobile);
+    @include line-height(nth($properties, 2), mobile);
+    @include margin-top(nth($properties, 3), mobile);
+    @include margin-bottom(nth($properties, 4), mobile);
   }
 }
 
 @each $device, $width in $screen-breakpoint {
   @include min-screen($width) {
-    @each $tag, $properties in get-headings-properties($device) {
+    @each $tag, $properties in __get-headings-properties($device) {
       #{$tag} {
-        @include font-size(get-heading-font-size-ratio($properties));
-        @include line-height(get-heading-line-height($properties), $device);
-        @include margin-top(get-heading-margin-top($properties), $device);
-        @include margin-bottom(get-heading-margin-bottom($properties), $device);
+        @include font-size(nth($properties, 1), $device);
+        @include line-height(nth($properties, 2), $device);
+        @include margin-top(nth($properties, 3), $device);
+        @include margin-bottom(nth($properties, 4), $device);
       }
     }
   }

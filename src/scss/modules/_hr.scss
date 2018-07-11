@@ -3,7 +3,6 @@ hr {
   display: block;
   border: 0;
   height: #{rhythm(mobile)}px;
-  height: #{rhythm-relative(mobile)}rem;
   @include margin(($hr-margin-rhythm auto), mobile);
 
   @if $hr-mode == 'content' {
@@ -35,7 +34,6 @@ hr {
   @each $device, $width in $screen-breakpoint {
     @include min-screen($width) {
       height: #{rhythm($device)}px;
-      height: #{rhythm-relative($device)}rem;
       @include margin(($hr-margin-rhythm auto), $device);
 
       @if $hr-mode == 'line' {
