@@ -19,9 +19,9 @@
   "repository": "github:MunifTanjim/typography.css",
   "scripts": {
     "build:css": "npm-run-all -s css:compile css:postcss css:minify --silent",
-    "css:compile": "node ./src/scripts/css-compile.js",
-    "css:postcss": "node ./src/scripts/css-postcss.js",
-    "css:minify": "node ./src/scripts/css-minify.js"
+    "css:compile": "node ./scripts/css-compile.js",
+    "css:postcss": "node ./scripts/css-postcss.js",
+    "css:minify": "node ./scripts/css-minify.js"
   },
   "devDependencies": {
     "autoprefixer": "^8.5.0",
