@@ -13,7 +13,7 @@
   "author": "MunifTanjim (https://muniftanjim.com)",
   "files": [
     "dist",
-    "src/scss"
+    "src"
   ],
   "main": "dist/css/typography.css",
   "repository": "github:MunifTanjim/typography.css",
@@ -21,7 +21,8 @@
     "build:css": "npm-run-all -s css:compile css:postcss css:minify --silent",
     "css:compile": "node ./scripts/css-compile.js",
     "css:postcss": "node ./scripts/css-postcss.js",
-    "css:minify": "node ./scripts/css-minify.js"
+    "css:minify": "node ./scripts/css-minify.js",
+    "prepare": "npm-run-all -s build:css --silent"
   },
   "devDependencies": {
     "autoprefixer": "^8.5.0",

@@ -54,14 +54,14 @@ $scale-ratio: (
   desktop: 3
 ) !default;
 
-/* content block */
+// content block
 $content-selector: 'article' !default;
 $content-max-width: 720px !default;
 $content-float-max-width: pow(2 * $major-second, -1) *
   map-get($screen-breakpoint, desktop) !default;
 $content-padding-rhythm: 0 1 !default;
 
-/* headings */
+// headings
 $heading-scale-point: (
   h1: 5,
   h2: 4,
@@ -98,7 +98,7 @@ $heading-margin-bottom-rhythm: (
   h6: 0.5
 ) !default;
 
-/* horizontal rule */
+// horizontal rule
 $hr-margin-rhythm: 2 !default;
 $hr-mode: 'content' !default;
 // mode: `content`

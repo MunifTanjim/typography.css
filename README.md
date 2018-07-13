@@ -21,6 +21,10 @@ $ yarn add typography.css --dev
 ### Pre-built CSS
 
 ```html
+<div class='typography'>
+  <!-- typography.css only applies here  -->
+</div>
+
 <link rel="stylesheet" href="https://unpkg.com/typography.css/dist/typography.css">
 ```
 
@@ -30,6 +34,8 @@ $ yarn add typography.css --dev
 /* Override typography.css Variables before importing it */
 @import 'typography`
 ```
+
+The variables are listed in [src/scss/_variables.scss](https://github.com/MunifTanjim/typography.css/blob/master/src/scss/_variables.scss) file.
 
 ## Related Projects
 
